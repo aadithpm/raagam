@@ -2,12 +2,6 @@ import unittest
 from artist import artists_handler_spotify
 
 
-class Unittest(unittest.TestCase):
-
-    def test_canary(self):
-        self.assertTrue(True)
-
-
 class ArtistsHandlerTest(unittest.TestCase):
 
     def setUp(self):
@@ -26,14 +20,23 @@ class ArtistsHandlerTest(unittest.TestCase):
             }
         }
         self.test_data_multiple = {}
+        self.response_handler = artists_handler_spotify.ArtistsResponse(
+            self.test_data_simple["artists"]
+        )
+
+    def test_canary(self):
+        self.assertTrue(True)
 
     def test_extract_artist_gets_artist_data(self):
         test_artist = self.test_data_simple["artists"]["items"][0]
         name_to_use = test_artist["name"]
         id_to_check = test_artist["id"]
-        response_handler = artists_handler_spotify.ArtistsResponse(
-            self.test_data_simple["artists"]
-        )
 
         self.assertEquals(
-            id_to_check, response_handler.extract_artist_id(name_to_use))
+            id_to_check, self.response_handler.extract_artist_id(name_to_use))
+
+    def test_extract_artist_returns_none_when_no_artist(self):
+        name_to_use = "I Should Return None"
+
+        self.assertEquals(
+            None, self.response_handler.extract_artist_id(name_to_use))
