@@ -40,3 +40,9 @@ class ArtistsHandlerTest(unittest.TestCase):
 
         self.assertEquals(
             None, self.response_handler.extract_artist_id(name_to_use))
+
+    def test_get_all_artist_names(self):
+        self.assertEquals(
+            ["Muse", "I Don't Exist"],
+            self.response_handler.get_all_artist_names()
+        )
