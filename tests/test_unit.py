@@ -32,17 +32,17 @@ class ArtistsHandlerTest(unittest.TestCase):
         name_to_use = test_artist["name"]
         id_to_check = test_artist["id"]
 
-        self.assertEquals(
+        self.assertEqual(
             id_to_check, self.response_handler.extract_artist_id(name_to_use))
 
     def test_extract_artist_returns_none_when_no_artist(self):
         name_to_use = "I Should Return None"
 
-        self.assertEquals(
+        self.assertEqual(
             None, self.response_handler.extract_artist_id(name_to_use))
 
     def test_get_all_artist_names(self):
-        self.assertEquals(
+        self.assertEqual(
             ["Muse", "I Don't Exist"],
             self.response_handler.get_all_artist_names()
         )
