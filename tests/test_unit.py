@@ -49,3 +49,11 @@ class ArtistsHandlerTest(unittest.TestCase):
             ["Muse", "I Don't Exist"],
             self.response_handler.get_all_artist_names()
         )
+
+    def test_get_artist_url(self):
+        test_artist_id = "123456"
+
+        self.assertEqual(
+            "http://open.spotify.com/idontexist",
+            self.response_handler.get_artist_url(test_artist_id)
+        )

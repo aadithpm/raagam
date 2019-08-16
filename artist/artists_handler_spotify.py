@@ -19,3 +19,11 @@ class ArtistsResponse():
         for artist in self.artists:
             if artist["name"] == name:
                 return artist["id"]
+
+    def get_artist_url(self, id):
+        """
+        Returns the Spotify page URL for an ID
+        """
+        for artist in self.artists:
+            if artist["id"] == id:
+                return artist["href"]
