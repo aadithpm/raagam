@@ -13,9 +13,9 @@ class ArtistsResponse():
         use this for when a user enters a string and suggestions pop up in
         the input field
         """
-        return [self.artists[artist]["name"] for artist in self.artists]
+        return [artist["name"] for artist in self.artists]
 
     def extract_artist_id(self, name):
-        for artist_number in self.artists:
-            if self.artists[artist_number]["name"] == name:
-                return self.artists[artist_number]["id"]
+        for artist in self.artists:
+            if artist["name"] == name:
+                return artist["id"]

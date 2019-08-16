@@ -7,18 +7,21 @@ class ArtistsHandlerTest(unittest.TestCase):
     def setUp(self):
         self.test_data_simple = {
             "artists": {
-                "items": {
-                    0: {
+                "items": [
+                    {
                         "id": "12Chz98pHFMPJEknJQMWvI",
                         "name": "Muse",
+                        "href": "http://open.spotify.com/muse",
                     },
-                    1: {
+                    {
                         "id": "123456",
                         "name": "I Don't Exist",
+                        "href": "http://open.spotify.com/idontexist",
                     }
-                }
+                ]
             }
         }
+
         self.test_data_multiple = {}
         self.response_handler = artists_handler_spotify.ArtistsResponse(
             self.test_data_simple["artists"]
